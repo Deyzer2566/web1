@@ -1,0 +1,57 @@
+checkButton.onclick = function(){
+	if(checkFields())
+	{		
+		let xhr = new XMLHttpRequest();
+		xhr.onload = function(){
+			let cookies = document.cookie
+			.split("; ")
+			.find((row) => row.startsWith("history="))
+			?.split("=")[1];
+			
+			if(cookies !== undefined)
+			{
+				cookies = decodeURI(cookies);
+				cookies += '$'+xhr.response;
+			}
+			else
+				cookies = xhr.response;
+			document.cookie = 'history='+encodeURI(cookies);
+			updateTable();
+		}
+		xhr.open("POST","script.php");
+		let formData = new FormData(document.getElementById("form")); // создаём объект, по желанию берём данные формы <form>
+		xhr.send(formData);
+	}
+};
+function updateTable(){
+	table = document.getElementById('table');
+	content = String.raw`<tr>
+	<th>X</th>
+	<th>Y</th>
+	<th>R</th>
+	<th>Результат</th>
+	<th>Время</th>
+	<th>Время исполнения скрипта</th>
+	</tr>
+	<tbody>`;
+	cookies = document.cookie
+		.split('; ')
+		.find((row) => row.startsWith("history="))
+		?.split("=")[1];
+	cookies = decodeURI(cookies);
+	cookies.split('$').forEach((el) => {
+		content += "<tr>";
+		els = el.split(',');
+		els = [els[1],els[2],els[3],els[0],els[4],els[5]];
+		if(els[3] == 'bad')
+			els[3] = '-';
+		else
+			els[3]='+';
+		els.forEach((elem)=>{
+			content+="<td>"+elem+"</td>";
+		});
+		content += "</tr>";
+	});
+	content += "</tbody>";
+	table.innerHTML = content;
+}
