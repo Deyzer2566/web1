@@ -1,13 +1,32 @@
 let x = document.getElementById("x");
 let y = document.getElementById("y");
 let r = document.getElementById("r");
-let checkButton = document.getElementById("button");
+let checkButton = document.getElementById("check");
+let selectedX = '';
+for(let i = 0;i<x.children.length;i++){
+	but = x.children[i];
+	but.onclick = function(){
+		selectedX = x.children[i].value;
+		labels = document.getElementsByTagName('label');
+		for(let j = 0; j < labels.length; j++ ) {
+		  if (labels[j].htmlFor == "x")
+			   label = labels[j];
+		}
+		label.innerHTML ='Введите координату X='+selectedX+":";
+	}
+}
 function checkFields(){
+	if(selectedX == "")
+	{
+		alert("Выберите значение X");
+		return false;
+	}
 	if(y.value == "")
 	{
 		alert("Введите значение y");
 		return false;
 	}
+	y.value = y.value.replace(',','.');
 	if(isNaN(parseFloat(y.value)))
 	{
 		alert("Введите в поле y число!");

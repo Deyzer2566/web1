@@ -3,43 +3,54 @@
 <head>
  <meta charset="UTF-8">
  <title>Проверка попадания точки в область</title>
+ <style>
+	#x{
+		display: inline;
+	}
+ </style>
+ <link rel="stylesheet" href="hat.css" type="text/css">
+ <link rel="stylesheet" href="table.css" type="text/css">
+ <link rel="stylesheet" href="page_styles.css" type="text/css">
 </head>
 <body>
- <header>
-  <h1>Проверка попадания точки в область</h1>
-  <p>Выполнил: Козодой Андрей</p>
-  <p>Группа: P3216</p>
-  <p>Вариант: 2611</p>
- </header>
- <canvas id="canvas" width="300" height="300"></canvas>
+	<header>
+		<h1>Проверка попадания точки в область</h1>
+		<p>Выполнил: Козодой Андрей</p>
+		<p>Группа: P3216</p>
+		<p>Вариант: 2611</p>
+	</header>
+	<canvas id="canvas" width="300" height="300"></canvas>
 	<form id="form">
-	<label for="x">Введите координату X:</label>
-	<select id="x" name="x">
-	<option value="-2">-2</option>
-	<option value="-1.5">-1.5</option>
-	<option value="-1">-1</option>
-	<option value="-0.5">-0.5</option>
-	<option value="0">0</option>
-	<option value="0.5">0.5</option>
-	<option value="1">1</option>
-	<option value="1.5">1.5</option>
-	<option value="2">2</option>
-	</select>
-	<label for="y">Введите координату Y (-3 ... 5):</label>
-	<input type="text" id="y" name="y">
-	<label for="r">Выберите радиус R (2 ... 5):</label>
-	<input type="text" id="r" name="r">
-	<button type="button" id="button">Проверить</button>
+		<label for="x">Введите координату X:</label>
+		<div id="x">
+			<input type="button" value="-2" />
+			<input type="button" value="-1.5" />
+			<input type="button" value="-1" />
+			<input type="button" value="-0.5" />
+			<input type="button" value="0" />
+			<input type="button" value="0.5" />
+			<input type="button" value="1" />
+			<input type="button" value="1.5" />
+			<input type="button" value="2" />
+		</div>
+		<label for="y">Введите координату Y (-3 ... 5):</label>
+		<input type="text" id="y" name="y">
+		<label for="r">Выберите радиус R (2 ... 5):</label>
+		<input type="text" id="r" name="r">
+		<button type="button" id="check">Проверить</button>
+		<button type="button" onclick="document.cookie='history=;max-age=0';updateTable();redraw();" >очистить</button>
 	</form>
 	<table id="table">
-	<tr>
-	<th>X</th>
-	<th>Y</th>
-	<th>R</th>
-	<th>Результат</th>
-	<th>Время</th>
-	<th>Время исполнения скрипта</th>
-	</tr>
+	<thead>
+		<tr>
+			<th>X</th>
+			<th>Y</th>
+			<th>R</th>
+			<th>Результат</th>
+			<th>Время</th>
+			<th>Время исполнения скрипта</th>
+		</tr>
+	</thead>
 	<tbody>
 	</tbody>
 	</table>

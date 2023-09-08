@@ -14,8 +14,8 @@
 			if($x >= $R && $y>=-$R/2)
 				$flag = 'good';
 		}
-		else if($x < 0 && $y < 0){
-			if($x*$x + $y*$y <= $R*$R)
+		else if($x <= 0 && $y <= 0){
+			if($x*$x + $y*$y <= $R*$R/4)
 				$flag = 'good';
 		}
 		echo $flag.','.$x.','.$y.','.$R.','.((new DateTime("now", new DateTimeZone('Europe/Moscow')))->format('d/m/Y H:i:s')).','.(microtime(true)-$curtime);

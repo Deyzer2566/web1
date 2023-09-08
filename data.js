@@ -17,15 +17,17 @@ checkButton.onclick = function(){
 				cookies = xhr.response;
 			document.cookie = 'history='+encodeURI(cookies);
 			updateTable();
+			redraw();
 		}
 		xhr.open("POST","script.php");
 		let formData = new FormData(document.getElementById("form")); // создаём объект, по желанию берём данные формы <form>
+		formData.append('x',selectedX);
 		xhr.send(formData);
 	}
 };
 function updateTable(){
 	table = document.getElementById('table');
-	content = String.raw`<tr>
+	content = String.raw`<thead><tr>
 	<th>X</th>
 	<th>Y</th>
 	<th>R</th>
@@ -33,11 +35,16 @@ function updateTable(){
 	<th>Время</th>
 	<th>Время исполнения скрипта</th>
 	</tr>
+	</thead>
 	<tbody>`;
 	cookies = document.cookie
 		.split('; ')
 		.find((row) => row.startsWith("history="))
 		?.split("=")[1];
+	console.log(cookies);
+	if(cookies == undefined)
+		return;
+	console.log(cookies);
 	cookies = decodeURI(cookies);
 	cookies.split('$').forEach((el) => {
 		content += "<tr>";
@@ -55,3 +62,4 @@ function updateTable(){
 	content += "</tbody>";
 	table.innerHTML = content;
 }
+updateTable();
