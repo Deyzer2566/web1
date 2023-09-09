@@ -3,12 +3,8 @@
 <head>
  <meta charset="UTF-8">
  <title>Проверка попадания точки в область</title>
- <style>
-	#x{
-		display: inline;
-	}
- </style>
  <link rel="stylesheet" href="hat.css" type="text/css">
+ <link rel="stylesheet" href="form.css" type="text/css">
  <link rel="stylesheet" href="table.css" type="text/css">
  <link rel="stylesheet" href="page_styles.css" type="text/css">
 </head>
@@ -21,8 +17,8 @@
 	</header>
 	<canvas id="canvas" width="300" height="300"></canvas>
 	<form id="form">
-		<label for="x">Введите координату X:</label>
-		<div id="x">
+		<label for="x" >Введите координату X:</label>
+		<div name="x" id="x">
 			<input type="button" value="-2" />
 			<input type="button" value="-1.5" />
 			<input type="button" value="-1" />
@@ -38,7 +34,6 @@
 		<label for="r">Выберите радиус R (2 ... 5):</label>
 		<input type="text" id="r" name="r">
 		<button type="button" id="check">Проверить</button>
-		<button type="button" onclick="document.cookie='history=;max-age=0';updateTable();redraw();" >очистить</button>
 	</form>
 	<table id="table">
 	<thead>

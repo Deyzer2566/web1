@@ -21,6 +21,12 @@ function checkFields(){
 		alert("Выберите значение X");
 		return false;
 	}
+	if(!(selectedX == -2 || selectedX==-1.5 || selectedX==-1 || selectedX==-0.5 || selectedX==0
+				|| selectedX == 2 || selectedX==1.5 || selectedX==1 || selectedX==0.5))
+	{
+		alert('Неккоректное значение X');
+		return;
+	}			
 	if(y.value == "")
 	{
 		alert("Введите значение y");

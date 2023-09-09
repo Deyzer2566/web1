@@ -8,6 +8,21 @@ checkButton.onclick = function(){
 			.find((row) => row.startsWith("history="))
 			?.split("=")[1];
 			
+			if(xhr.response.startsWith('x'))
+			{
+				alert('Неккоректное значение x');
+				return;
+			}
+			if(xhr.response.startsWith('y'))
+			{
+				alert('Неккоректное значение y');
+				return;
+			}
+			if(xhr.response.startsWith('r'))
+			{
+				alert('Неккоректное значение R');
+				return;
+			}
 			if(cookies !== undefined)
 			{
 				cookies = decodeURI(cookies);
@@ -41,10 +56,8 @@ function updateTable(){
 		.split('; ')
 		.find((row) => row.startsWith("history="))
 		?.split("=")[1];
-	console.log(cookies);
 	if(cookies == undefined)
 		return;
-	console.log(cookies);
 	cookies = decodeURI(cookies);
 	cookies.split('$').forEach((el) => {
 		content += "<tr>";

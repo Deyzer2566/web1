@@ -47,9 +47,10 @@ function redraw(){
 	context.stroke();
 	
 	context.fillText("R/2",155,100);
-	context.fillText("R/2",200,145);
+	context.fillText("R/2",190,145);
 	context.fillText("R/2",155,200);
 	context.fillText("R/2",90,145);
+	context.fillText("R",240,145);
 	
 	cookies = document.cookie
 		.split('; ')
